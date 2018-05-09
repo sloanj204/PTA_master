@@ -1,0 +1,146 @@
+{% extends "pta/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <header>
+
+        <div id="topHeaderRow">
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-text">Welcome to Collaborate.</div>
+                    <!--, <a href="#">Login</a> or <a href="#">Create new
+                        account</a></div>-->
+                </div>
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-toggle="modal" href="#loginModal"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                        <li><a data-toggle="modal" href="#registerModal"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                        <!--<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-arrow-right"></span> Checkout</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div id="logoRow">
+            <!--
+            <form action="http://www.randyconnolly.com/tests/process.php" class="form-inline">
+                <div class='btn-toolbar pull-right'>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            -->
+            <h1>Collaborate!</h1>
+            <h4>A website for Sunnydale Elementary School parents and teachers.</h4>
+        </div>  <!-- end logoRow -->
+
+        <!--
+        <div id="mainNavigationRow">
+            <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li><a href="assign2-index.html">Home</a></li>
+                    <li class="active"><a href="assign2-about.html">About Us</a></li>
+                    <li><a href="assign2-work.html">Art Works</a></li>
+                    <li><a href="assign2-artists.html">Artists</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Specials
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Special 1</a></li>
+                            <li><a href="#">Special 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>  -->
+
+    </header>
+
+    <div class="jumbotron">
+        <!--
+        <h3>About Us</h3>
+        <p>This assignment was created by <em>Suat Iskender</em>.</p>
+        <p>It was created for CS4720 at Kennesaw State University.</p>
+        <button type="button" class="btn btn-primary btn-lg">Learn more</button>
+        -->
+    </div>
+
+    <!-- login Modal -->
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username...">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter password...">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                        <div class="form-group text-right">
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+                <!--
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>-->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- register Modal -->
+    <div id="registerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

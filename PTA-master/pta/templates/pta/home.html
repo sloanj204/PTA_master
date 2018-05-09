@@ -1,0 +1,65 @@
+{% extends "pta/base.html" %}
+
+{% block title %}Collaborate! dashboard{% endblock %}
+
+{% block content %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            User
+        </div>
+        <div class="panel-body">
+            <p>Username: {{ user }}</p>
+            <p>First Name: {{ user.first_name }}</p>
+            <p>Last Name: {{ user.last_name }}</p>
+            <p>Email Address: {{ user.email }}</p>
+            <p><a href="{% url 'edituser' %}">Edit User Info</a></p>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Classroom Info
+        </div>
+        <div class="panel-body">
+            {% if teacher %}
+                <p>Teacher's Name: {{ teacher }}</p>
+                <p>Teacher's Username: {{ teacher.user }}</p>
+                <hr/>
+                <p>{{ teacher.classinfo }}</p>
+            {% else %}
+                <p>No classroom info to display for this user.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if parentlist %}
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Classlist
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>username</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for par in parentlist %}
+                        <tr>
+                            <td>{{ par }}</td>
+                            <td>{{ par.user.first_name }}</td>
+                            <td>{{ par.user.last_name }}</td>
+                            <td>{{ par.user.email }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

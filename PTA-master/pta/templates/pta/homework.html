@@ -1,0 +1,40 @@
+{% extends "pta/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Homework{% endblock %}
+
+{% block content %}
+
+    {% if teacher %}
+        <a href="{% url 'addhomework' %}" class="btn btn-primary btn-lg" role="button">Add homework</a>
+    {% endif %}
+
+    {% if homeworkList %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>title</th>
+                <th>description</th>
+                <th>date assigned</th>
+                <th>date due</th>
+                <th>points</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for hw in homeworkList %}
+                <tr>
+                    <td>{{ hw.title }}</td>
+                    <td>{{ hw.description }}</td>
+                    <td>{{ hw.date_assigned }}</td>
+                    <td>{{ hw.due_date }}</td>
+                    <td>{{ hw.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        There is no homework to display for this user.
+    {% endif %}
+
+{% endblock %}

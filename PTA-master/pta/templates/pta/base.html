@@ -1,0 +1,93 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Collaborate! a website for Hidden Valley parents and teachers.{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Sriracha|Titillium+Web" rel="stylesheet">
+
+    <!-- Latest compiled and minified Bootstrap CSS from remote-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'pta/styles.css' %}" />
+
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <div id="topHeaderRow">
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-text">
+                        {% if user.is_authenticated %}
+                            Welcome to Collaborate, {{ user.username }}.
+                        {% else %}
+                            Welcome to Collaborate.  Please log in.
+                        {% endif %}
+                    </div>
+                    <!--, <a href="#">Login</a> or <a href="#">Create new
+                        account</a></div>-->
+                </div>
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                            <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Create an account</a></li>
+                        {% endif %}
+                        <!--<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-arrow-right"></span> Checkout</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    {% if user.is_authenticated %}
+        <div id="logoRow">
+            <h1>Collaborate!</h1>
+            <h4>A website for Sunnydale Elementary School parents and teachers.</h4>
+        </div>  <!-- end logoRow -->
+    {% endif %}
+
+    <div id="mainNavigationRow">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="{% if nbar == 'home' %}active dropdown{% endif %}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Info
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'homepage' %}">View User Info</a></li>
+                        <li><a href="{% url 'edituser' %}">Edit User Info</a></li>
+                    </ul>
+                </li>
+                <li class="{% if nbar == 'homework' %}active{% endif %}"><a href="{% url 'homework' %}">Homework</a></li>
+                <li><a href="#">Activities</a></li>
+                <li class="{% if nbar == 'todo' %}active{% endif %}"><a href="{% url 'todo' %}">To-Do List</a></li>
+                <li class="{% if nbar == 'wishlist' %}active{% endif %}"><a href="{% url 'wishlist' %}">Wish List</a></li>
+                <li><a href="#">Message Board</a></li>
+                <li class="{% if nbar == 'meettheteam' %}active{% endif %}"><a href="{% url 'meettheteam' %}">Meet the Team</a></li>
+            </ul>
+        </nav>
+    </div>  <!-- end mainNavigationRow -->
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+</body>
+</html>
